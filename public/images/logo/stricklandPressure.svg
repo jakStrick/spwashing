@@ -1,0 +1,20 @@
+<svg viewBox="0 0 850 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main Text: Strickland Pressure Washing Services -->
+  <text x="425" y="45" font-family="Arial, sans-serif" font-size="38" font-weight="700" text-anchor="middle">
+    <tspan fill="#5a9d3e">S</tspan><tspan fill="#2d2d2d">trickland  </tspan>
+    <tspan fill="#5a9d3e">P</tspan><tspan fill="#2d2d2d">ressure  </tspan>
+    <tspan fill="#5a9d3e">W</tspan><tspan fill="#2d2d2d">ashing  </tspan>
+    <tspan fill="#5a9d3e">S</tspan><tspan fill="#2d2d2d">ervices</tspan>
+  </text>
+
+  <!-- Left decorative line -->
+  <line x1="200" y1="68" x2="320" y2="68" stroke="#2d2d2d" stroke-width="1.5"/>
+
+  <!-- Tagline - Centered under the entire business name -->
+  <text x="425" y="72" font-family="Arial, sans-serif" font-size="10" fill="#2d2d2d" text-anchor="middle" letter-spacing="1.5">
+    WE DO IT RIGHT THE FIRST TIME
+  </text>
+
+  <!-- Right decorative line -->
+  <line x1="530" y1="68" x2="650" y2="68" stroke="#2d2d2d" stroke-width="1.5"/>
+</svg>
