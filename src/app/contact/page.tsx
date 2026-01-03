@@ -4,7 +4,7 @@ import { Phone, Mail, MapPin } from "lucide-react";
 
 // Contact Page
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     phone: "",
@@ -13,7 +13,8 @@ export default function ContactPage() {
     message: "",
   });
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     if (formData.name && formData.email && formData.phone) {
       alert(
         "Thank you for your request! We will contact you within 24 hours with your free quote."
@@ -41,7 +42,7 @@ export default function ContactPage() {
     });
   };
 
-  const handleServiceToggle = (service) => {
+  const handleServiceToggle = (service: string) => {
     setFormData((prev) => ({
       ...prev,
       services: prev.services.includes(service)
