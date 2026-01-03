@@ -2,9 +2,17 @@
 import { useState } from "react";
 import { Phone, Mail, MapPin } from "lucide-react";
 
+interface contactFormData {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  services: string[];
+  message: string;
+}
 // Contact Page
 export default function ContactPage() {
-  const [formData, setFormData] = useState<FormData>({
+  const [contactFormData, setFormData] = useState<contactFormData>({
     name: "",
     email: "",
     phone: "",
@@ -15,7 +23,11 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (formData.name && formData.email && formData.phone) {
+    if (
+      contactFormData.name &&
+      contactFormData.email &&
+      contactFormData.phone
+    ) {
       alert(
         "Thank you for your request! We will contact you within 24 hours with your free quote."
       );
@@ -37,7 +49,7 @@ export default function ContactPage() {
   ) => {
     const { name, value } = e.target;
     setFormData({
-      ...formData,
+      ...contactFormData,
       [name]: value,
     });
   };
@@ -140,7 +152,7 @@ export default function ContactPage() {
                   type="text"
                   id="name"
                   name="name"
-                  value={formData.name}
+                  value={contactFormData.name}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                 />
@@ -157,7 +169,7 @@ export default function ContactPage() {
                   type="email"
                   id="email"
                   name="email"
-                  value={formData.email}
+                  value={contactFormData.email}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                 />
@@ -174,7 +186,7 @@ export default function ContactPage() {
                   type="tel"
                   id="phone"
                   name="phone"
-                  value={formData.phone}
+                  value={contactFormData.phone}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                 />
@@ -191,7 +203,7 @@ export default function ContactPage() {
                   type="text"
                   id="address"
                   name="address"
-                  value={formData.address}
+                  value={contactFormData.address}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                 />
@@ -212,7 +224,7 @@ export default function ContactPage() {
                     >
                       <input
                         type="checkbox"
-                        checked={formData.services.includes(service)}
+                        checked={contactFormData.services.includes(service)}
                         onChange={() => handleServiceToggle(service)}
                         className="mr-2 w-4 h-4 text-red-600"
                       />
@@ -232,7 +244,7 @@ export default function ContactPage() {
                 <textarea
                   id="message"
                   name="message"
-                  value={formData.message}
+                  value={contactFormData.message}
                   onChange={handleChange}
                   rows="4"
                   className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
