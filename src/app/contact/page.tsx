@@ -140,84 +140,91 @@ export default function ContactPage() {
           {/* Contact Form */}
           <div className="bg-white p-8 rounded-lg shadow-lg border-2 border-gray-200">
             <h2 className="text-2xl font-bold mb-6">Check Availability</h2>
+
             <div>
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 font-semibold mb-2"
-                  htmlFor="name"
-                >
-                  Name *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={contactFormData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                />
-              </div>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-4">
+                  <label
+                    className="block text-gray-700 font-semibold mb-2"
+                    htmlFor="name"
+                  >
+                    Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={contactFormData.name}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                  />
+                </div>
 
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 font-semibold mb-2"
-                  htmlFor="email"
-                >
-                  Email *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={contactFormData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                />
-              </div>
+                <div className="mb-4">
+                  <label
+                    className="block text-gray-700 font-semibold mb-2"
+                    htmlFor="email"
+                  >
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={contactFormData.email}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                  />
+                </div>
 
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 font-semibold mb-2"
-                  htmlFor="phone"
-                >
-                  Phone *
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={contactFormData.phone}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                />
-              </div>
+                <div className="mb-4">
+                  <label
+                    className="block text-gray-700 font-semibold mb-2"
+                    htmlFor="phone"
+                  >
+                    Phone *
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={contactFormData.phone}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                  />
+                </div>
 
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 font-semibold mb-2"
-                  htmlFor="address"
-                >
-                  Address
-                </label>
-                <input
-                  type="text"
-                  id="address"
-                  name="address"
-                  value={contactFormData.address}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                />
-              </div>
+                <div className="mb-4">
+                  <label
+                    className="block text-gray-700 font-semibold mb-2"
+                    htmlFor="address"
+                  >
+                    Address
+                  </label>
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    value={contactFormData.address}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                  />
+                </div>
 
-              <div className="mb-4">
-                <label className="block text-gray-700 font-semibold mb-2">
-                  What Are We Cleaning For You? *
-                </label>
-                <p className="text-sm text-gray-600 mb-2">
-                  Select multiple services & save 10%!
-                </p>
-                {["House", "Roof", "Driveway", "Deck/Patio", "Commercial"].map(
-                  (service) => (
+                <div className="mb-4">
+                  <label className="block text-gray-700 font-semibold mb-2">
+                    What Are We Cleaning For You? *
+                  </label>
+                  <p className="text-sm text-gray-600 mb-2">
+                    Select multiple services & save 10%!
+                  </p>
+                  {[
+                    "House",
+                    "Roof",
+                    "Driveway",
+                    "Deck/Patio",
+                    "Commercial",
+                  ].map((service) => (
                     <label
                       key={service}
                       className="flex items-center mb-2 cursor-pointer"
@@ -230,33 +237,33 @@ export default function ContactPage() {
                       />
                       <span>{service}</span>
                     </label>
-                  )
-                )}
-              </div>
+                  ))}
+                </div>
 
-              <div className="mb-6">
-                <label
-                  className="block text-gray-700 font-semibold mb-2"
-                  htmlFor="message"
+                <div className="mb-6">
+                  <label
+                    className="block text-gray-700 font-semibold mb-2"
+                    htmlFor="message"
+                  >
+                    Additional Details
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={contactFormData.message}
+                    onChange={handleChange}
+                    rows={4}
+                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-red-600 text-white py-3 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors shadow-lg"
                 >
-                  Additional Details
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={contactFormData.message}
-                  onChange={handleChange}
-                  rows="4"
-                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                ></textarea>
-              </div>
-
-              <button
-                onClick={handleSubmit}
-                className="w-full bg-red-600 text-white py-3 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors shadow-lg"
-              >
-                Get My Free Quote
-              </button>
+                  Get My Free Quote
+                </button>
+              </form>
             </div>
           </div>
         </div>
