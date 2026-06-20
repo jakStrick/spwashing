@@ -29,7 +29,7 @@ export default function ContactPage() {
       contactFormData.phone
     ) {
       alert(
-        "Thank you for your request! We will contact you within 24 hours with your free quote."
+        "Thank you for your request! We will contact you within 24 hours with your free quote.",
       );
       setFormData({
         name: "",
@@ -45,7 +45,7 @@ export default function ContactPage() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData({
@@ -66,7 +66,7 @@ export default function ContactPage() {
   return (
     <div className="bg-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-bold text-center mb-4">
+        <h1 className="text-4xl font-bold text-center mb-4 text-gray-900">
           Request Your Free Quote
         </h1>
         <p className="text-center text-gray-600 mb-12">
@@ -77,7 +77,9 @@ export default function ContactPage() {
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div>
-            <h2 className="text-2xl font-bold mb-6">Get In Touch</h2>
+            <h2 className="text-2xl font-bold mb-6 text-gray-900">
+              Get In Touch
+            </h2>
             <p className="text-gray-700 mb-8">
               Have a question or ready to schedule a service? Reach out to us
               and we'll get back to you as soon as possible.
@@ -87,12 +89,12 @@ export default function ContactPage() {
               <div className="flex items-start">
                 <Phone className="text-red-600 mt-1 mr-4" size={24} />
                 <div>
-                  <h3 className="font-semibold">Phone</h3>
+                  <h3 className="font-semibold text-gray-900">Phone</h3>
                   <a
-                    href="tel:503-555-7673"
+                    href="tel:503-812-9841"
                     className="text-red-600 font-bold text-lg hover:text-red-700"
                   >
-                    (503) 555-7673
+                    (503) 812-9841
                   </a>
                 </div>
               </div>
@@ -100,7 +102,7 @@ export default function ContactPage() {
               <div className="flex items-start">
                 <Mail className="text-red-600 mt-1 mr-4" size={24} />
                 <div>
-                  <h3 className="font-semibold">Email</h3>
+                  <h3 className="font-semibold text-gray-900">Email</h3>
                   <p className="text-gray-600">info@stricklandwash.com</p>
                 </div>
               </div>
@@ -108,7 +110,7 @@ export default function ContactPage() {
               <div className="flex items-start">
                 <MapPin className="text-red-600 mt-1 mr-4" size={24} />
                 <div>
-                  <h3 className="font-semibold">Address</h3>
+                  <h3 className="font-semibold text-gray-900">Address</h3>
                   <p className="text-gray-600">
                     123 Main Street
                     <br />
@@ -119,7 +121,9 @@ export default function ContactPage() {
             </div>
 
             <div className="mt-8 bg-blue-50 p-6 rounded-lg">
-              <h3 className="font-semibold mb-2">Business Hours</h3>
+              <h3 className="font-semibold mb-2 text-gray-900">
+                Business Hours
+              </h3>
               <p className="text-gray-700">
                 Monday - Friday: 8:00 AM - 6:00 PM
               </p>
@@ -139,7 +143,9 @@ export default function ContactPage() {
 
           {/* Contact Form */}
           <div className="bg-white p-8 rounded-lg shadow-lg border-2 border-gray-200">
-            <h2 className="text-2xl font-bold mb-6">Check Availability</h2>
+            <h2 className="text-2xl font-bold mb-6 text-gray-900">
+              Check Availability
+            </h2>
 
             <div>
               <form onSubmit={handleSubmit}>
@@ -220,10 +226,10 @@ export default function ContactPage() {
                   </p>
                   {[
                     "House",
-                    "Roof",
                     "Driveway",
                     "Deck/Patio",
-                    "Commercial",
+                    "Outdoor Siding",
+                    "Vehicle Washing",
                   ].map((service) => (
                     <label
                       key={service}

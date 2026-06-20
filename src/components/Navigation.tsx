@@ -3,12 +3,16 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const Logo = ({ className = "h-36 w-full" }) => (
-  <img
+  <Image
     src="/images/logo/stricklandPressure.svg"
     alt="Strickland Pressure Washing Services"
+    width={850}
+    height={100}
     className={className}
+    priority
   />
 );
 
@@ -24,11 +28,11 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="bg-white text-gray-800 sticky top-0 z-50 shadow-md">
+    <nav className="bg-blue-900 text-white sticky top-0 z-50 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-24">
           <Link href="/" className="cursor-pointer w-80">
-            <Logo className="h-36 w-full" />
+            <Logo className="h-46 w-full" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -40,21 +44,19 @@ export default function Navigation() {
                 className={`text-sm font-medium transition-colors ${
                   pathname === page.path
                     ? "text-red-600 font-semibold"
-                    : "text-gray-600 hover:text-red-600"
+                    : "text-white hover:text-red-600"
                 }`}
               >
                 {page.name}
               </Link>
             ))}
             <div className="text-center">
-              <p className="text-xs text-gray-600">
-                CALL NOW FOR YOUR FREE QUOTE
-              </p>
+              <p className="text-xs text-white">CALL NOW FOR YOUR FREE QUOTE</p>
               <a
-                href="tel:503-555-7673"
+                href="tel:503-812-9841"
                 className="text-red-600 font-bold text-lg hover:text-red-700"
               >
-                (503) 555-7673
+                (503) 812-9841
               </a>
             </div>
             <Link
@@ -96,10 +98,10 @@ export default function Navigation() {
               </Link>
             ))}
             <a
-              href="tel:503-555-7673"
+              href="tel:503-812-9841"
               className="block w-full text-left px-3 py-2 text-red-600 font-bold"
             >
-              Call (503) 555-7673
+              Call (503) 812-9841
             </a>
             <Link
               href="/contact"

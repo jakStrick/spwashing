@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ChevronRight,
   Clock,
@@ -12,9 +13,11 @@ import {
 } from "lucide-react";
 
 const Guarantee = ({ className = "h-36 w-full" }) => (
-  <img
+  <Image
     src="/images/logo/DCSS_Guarantee.svg"
     alt="100% Guarantee Tag"
+    width={300}
+    height={300}
     className={className}
   />
 );
@@ -55,10 +58,13 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=600&fit=crop"
                 alt="Professional pressure washing team"
+                width={800}
+                height={600}
                 className="rounded-lg shadow-xl w-full"
+                priority
               />
             </div>
 
@@ -89,10 +95,10 @@ export default function HomePage() {
                   Schedule Now To Save 10%
                 </Link>
                 <a
-                  href="tel:503-555-7673"
+                  href="tel:503-812-9841"
                   className="bg-blue-900 text-white px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-800 transition-colors shadow-lg text-center"
                 >
-                  (503) 555-7673
+                  (503) 812-9841
                 </a>
               </div>
             </div>
@@ -114,29 +120,33 @@ export default function HomePage() {
                 img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=300&h=200&fit=crop",
               },
               {
-                name: "Commercial",
-                img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=300&h=200&fit=crop",
-              },
-              {
-                name: "Roof Treatment",
-                img: "https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=300&h=200&fit=crop",
-              },
-              {
                 name: "Deck & Patio",
                 img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=300&h=200&fit=crop",
+              },
+              {
+                name: "Outdoor Siding",
+                img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+              },
+              {
+                name: "Vehicle Washing",
+                img: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=300&h=200&fit=crop",
               },
             ].map((service, index) => (
               <div
                 key={index}
                 className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow cursor-pointer"
               >
-                <img
+                <Image
                   src={service.img}
                   alt={service.name}
+                  width={300}
+                  height={200}
                   className="w-full h-32 object-cover"
                 />
                 <div className="p-3 text-center">
-                  <h3 className="font-semibold text-sm">{service.name}</h3>
+                  <h3 className="font-semibold text-sm text-gray-900">
+                    {service.name}
+                  </h3>
                 </div>
               </div>
             ))}
@@ -303,11 +313,13 @@ export default function HomePage() {
       {/* Services Section */}
       <div className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=500&h=333&fit=crop"
                 alt="House Wash"
+                width={500}
+                height={333}
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
@@ -328,9 +340,11 @@ export default function HomePage() {
             </div>
 
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&h=333&fit=crop"
                 alt="Concrete Wash"
+                width={500}
+                height={333}
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
@@ -351,18 +365,45 @@ export default function HomePage() {
             </div>
 
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=500&h=333&fit=crop"
-                alt="Roof Treatment"
+              <Image
+                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=333&fit=crop"
+                alt="Outdoor Siding"
+                width={500}
+                height={333}
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
                 <h3 className="text-2xl font-bold mb-3 text-gray-900">
-                  Roof Treatment
+                  Outdoor Siding
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  Restore the look of your roof and help prevent damage by
-                  eliminating black streaks, algae, and moss.
+                  Restore your home's siding to like-new condition, removing
+                  mold, mildew, and years of buildup.
+                </p>
+                <Link
+                  href="/services"
+                  className="text-red-600 font-semibold hover:text-red-700 flex items-center"
+                >
+                  Learn More <ChevronRight size={20} />
+                </Link>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <Image
+                src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=500&h=333&fit=crop"
+                alt="Vehicle Washing"
+                width={500}
+                height={333}
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-2xl font-bold mb-3 text-gray-900">
+                  Vehicle Washing
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  Professional exterior washing for cars, trucks, RVs, and
+                  fleet vehicles using safe, low-pressure techniques.
                 </p>
                 <Link
                   href="/services"
@@ -391,7 +432,7 @@ export default function HomePage() {
               <h3 className="text-2xl font-semibold mb-2">
                 Prevent Costly Repairs
               </h3>
-              <p className="text-blue-100">
+              <p className="text-white">
                 Regular cleaning prevents buildup that can cause damage
               </p>
             </div>
@@ -402,7 +443,7 @@ export default function HomePage() {
               <h3 className="text-2xl font-semibold mb-2">
                 Maintain Property Value
               </h3>
-              <p className="text-blue-100">
+              <p className="text-white">
                 Keep your home looking its best year-round
               </p>
             </div>
@@ -413,7 +454,7 @@ export default function HomePage() {
               <h3 className="text-2xl font-semibold mb-2">
                 Preserve Curb Appeal
               </h3>
-              <p className="text-blue-100">
+              <p className="text-white">
                 Make a great first impression every day
               </p>
             </div>
@@ -435,9 +476,11 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop"
                 alt="Before and after pressure washing"
+                width={600}
+                height={400}
                 className="rounded-lg shadow-xl w-full"
               />
             </div>
@@ -458,10 +501,10 @@ export default function HomePage() {
                   Schedule Now
                 </Link>
                 <a
-                  href="tel:503-555-7673"
+                  href="tel:503-812-9841"
                   className="bg-gray-200 text-gray-900 px-6 py-3 rounded-md font-semibold hover:bg-gray-300 transition-colors"
                 >
-                  (503) 555-7673
+                  (503) 812-9841
                 </a>
               </div>
             </div>

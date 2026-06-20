@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 // Services Page
 export default function ServicesPage() {
   const services = [
@@ -14,28 +16,28 @@ export default function ServicesPage() {
       img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop",
     },
     {
-      title: "Roof Treatment",
-      description:
-        "Remove moss, mold, and grime to restore your roof's health and appearance.",
-      img: "https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=400&h=300&fit=crop",
-    },
-    {
       title: "Deck & Fence Cleaning",
       description:
         "Revive your outdoor wooden structures with our specialized cleaning process.",
       img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=300&fit=crop",
     },
     {
-      title: "Commercial Cleaning",
-      description:
-        "Professional cleaning services for businesses, parking lots, and buildings.",
-      img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop",
-    },
-    {
       title: "Concrete Sealing",
       description:
         "Protect your concrete surfaces from weathering and extend their lifespan.",
       img: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&h=300&fit=crop",
+    },
+    {
+      title: "Outdoor Siding",
+      description:
+        "Restore your home's siding to like-new condition, removing mold, mildew, and years of buildup safely.",
+      img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
+    },
+    {
+      title: "Vehicle Washing",
+      description:
+        "Professional exterior washing for cars, trucks, RVs, and fleet vehicles using safe, low-pressure techniques.",
+      img: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=400&h=300&fit=crop",
     },
   ];
 
@@ -51,7 +53,7 @@ export default function ServicesPage() {
   return (
     <div className="bg-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-bold text-center mb-12">Our Services</h1>
+        <h1 className="text-4xl font-bold text-center mb-12 text-gray-900">Our Services</h1>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {services.map((service, index) => (
@@ -59,9 +61,11 @@ export default function ServicesPage() {
               key={index}
               className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
             >
-              <img
+              <Image
                 src={service.img}
                 alt={service.title}
+                width={400}
+                height={300}
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
@@ -76,7 +80,7 @@ export default function ServicesPage() {
 
         {/* Gallery Section */}
         <div className="bg-gray-50 rounded-lg p-8">
-          <h2 className="text-3xl font-bold text-center mb-8">
+          <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">
             Our Work Gallery
           </h2>
           <p className="text-center text-gray-600 mb-8">
@@ -88,9 +92,11 @@ export default function ServicesPage() {
                 key={index}
                 className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow"
               >
-                <img
+                <Image
                   src={img}
                   alt={`Gallery ${index + 1}`}
+                  width={400}
+                  height={300}
                   className="w-full h-48 object-cover hover:scale-110 transition-transform duration-300"
                 />
               </div>
