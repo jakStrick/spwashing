@@ -59,7 +59,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <Image
-                src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=600&fit=crop"
+                src="https://images.unsplash.com/photo-1683647115932-b33455fe6a3e?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fit=crop"
                 alt="Professional pressure washing team"
                 width={800}
                 height={600}
@@ -70,19 +70,9 @@ export default function HomePage() {
 
             <div>
               <h1 className="text-5xl md:text-6xl font-bold mb-4 text-gray-900 leading-tight">
-                #1 Professional
-                <br />
-                <span className="text-red-600">PRESSURE WASHING</span>
-                <br />
-                COMPANY
+                #1 IN PORTLAND
               </h1>
               <div className="mb-6">
-                <p className="text-2xl font-semibold text-gray-700 mb-2">
-                  PRESSURE WASHING SERVICES PROVIDED BY
-                </p>
-                <p className="text-3xl font-bold text-gray-900">
-                  TRAINED PROFESSIONALS
-                </p>
                 <p className="text-lg text-gray-600 mt-2">
                   We do it right the first time!
                 </p>
@@ -402,8 +392,8 @@ export default function HomePage() {
                   Vehicle Washing
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  Professional exterior washing for cars, trucks, RVs, and
-                  fleet vehicles using safe, low-pressure techniques.
+                  Professional exterior washing for cars, trucks, RVs, and fleet
+                  vehicles using safe, low-pressure techniques.
                 </p>
                 <Link
                   href="/services"

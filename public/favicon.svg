@@ -1,0 +1,14 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="10" fill="#1e3a8a"/>
+  <text
+    x="32"
+    y="32"
+    font-family="Arial, sans-serif"
+    font-size="19"
+    font-weight="700"
+    text-anchor="middle"
+    dominant-baseline="central"
+    fill="#73acf2"
+    letter-spacing="1"
+  >SPWS</text>
+</svg>

@@ -41,19 +41,50 @@ export default function ServicesPage() {
     },
   ];
 
-  const galleryImages = [
-    "https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=400&h=300&fit=crop",
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop",
-    "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=300&fit=crop",
-    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=300&fit=crop",
-    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&h=300&fit=crop",
-    "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=400&h=300&fit=crop",
+  const galleryImgBefore = [
+    {
+      src: "/images/portfolio/spw11.webp",
+      alt: "Strickland pressure washing before 11",
+    },
+    {
+      src: "/images/portfolio/spw5.webp",
+      alt: "Strickland pressure washing before 1",
+    },
+    {
+      src: "/images/portfolio/spw6.webp",
+      alt: "Strickland pressure washing before 6",
+    },
+    {
+      src: "/images/portfolio/spw13.webp",
+      alt: "Strickland pressure washing before 12",
+    },
+  ];
+
+  const galleryImgAfter: { src: string; alt: string }[] = [
+    {
+      src: "/images/portfolio/spw10.webp",
+      alt: "Strickland pressure washing before 10",
+    },
+    {
+      src: "/images/portfolio/spw7.webp",
+      alt: "Strickland pressure washing before 2",
+    },
+    {
+      src: "/images/portfolio/spw3.webp",
+      alt: "Strickland pressure washing before 3",
+    },
+    {
+      src: "/images/portfolio/spw12.webp",
+      alt: "Strickland pressure washing before 13",
+    },
   ];
 
   return (
     <div className="bg-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-bold text-center mb-12 text-gray-900">Our Services</h1>
+        <h1 className="text-4xl font-bold text-center mb-12 text-gray-900">
+          Our Services
+        </h1>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {services.map((service, index) => (
@@ -78,29 +109,62 @@ export default function ServicesPage() {
           ))}
         </div>
 
-        {/* Gallery Section */}
+        {/* Before & After Gallery */}
         <div className="bg-gray-50 rounded-lg p-8">
-          <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">
-            Our Work Gallery
+          <h2 className="text-3xl font-bold text-center mb-2 text-gray-900">
+            Before &amp; After Gallery
           </h2>
-          <p className="text-center text-gray-600 mb-8">
+          <p className="text-center text-gray-600 mb-10">
             Real transformations from properties just like yours
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {galleryImages.map((img, index) => (
-              <div
-                key={index}
-                className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow"
-              >
-                <Image
-                  src={img}
-                  alt={`Gallery ${index + 1}`}
-                  width={400}
-                  height={300}
-                  className="w-full h-48 object-cover hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-            ))}
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {galleryImgBefore.map((before, index) => {
+              const after = galleryImgAfter[index];
+              return (
+                <div
+                  key={index}
+                  className="rounded-lg shadow-md bg-white"
+                >
+                  <div className="grid grid-cols-2 divide-x divide-gray-200">
+                    {/* Before */}
+                    <div className="relative">
+                      <span className="absolute top-2 left-2 z-10 bg-blue-900 text-white text-xs font-bold px-2 py-1 rounded">
+                        BEFORE
+                      </span>
+                      <Image
+                        src={before.src}
+                        alt={before.alt}
+                        width={600}
+                        height={450}
+                        className="w-full h-44 object-cover rounded-l-lg transition-transform duration-300 ease-in-out hover:scale-[2] hover:z-50 relative"
+                      />
+                    </div>
+                    {/* After */}
+                    <div className="relative">
+                      <span className="absolute top-2 left-2 z-10 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">
+                        AFTER
+                      </span>
+                      {after ? (
+                        <Image
+                          src={after.src}
+                          alt={after.alt}
+                          width={600}
+                          height={450}
+                          className="w-full h-44 object-cover rounded-r-lg transition-transform duration-300 ease-in-out hover:scale-[2] hover:z-50 relative"
+                        />
+                      ) : (
+                        <div className="h-44 bg-gray-100 flex flex-col items-center justify-center border-2 border-dashed border-gray-300">
+                          <p className="text-xs text-gray-400 font-medium text-center px-3">
+                            Photo coming soon
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
