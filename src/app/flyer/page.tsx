@@ -13,7 +13,6 @@ export default function FlyerPage() {
   ];
 
   const credentials = [
-    { value: "BBB A+", label: "Rated" },
     { value: "100%", label: "Guarantee" },
 
     { value: "5-Star", label: "Reviewed" },
@@ -50,9 +49,7 @@ export default function FlyerPage() {
               <div className="text-sm font-bold tracking-[0.2em] text-blue-200 mt-0.5">
                 PRESSURE WASHING SERVICES
               </div>
-              <div className="text-xs text-blue-300 mt-1">
-                PORTLAND, OR • LICENSED, INSURED &amp; BONDED
-              </div>
+              <div className="text-xs text-blue-300 mt-1">PORTLAND, OR</div>
             </div>
             <div className="text-right">
               <div className="flex items-center justify-end gap-2">
@@ -74,17 +71,28 @@ export default function FlyerPage() {
           </div>
 
           {/* ── HEADLINE ── */}
-          <div className="text-center px-8 py-4 border-b border-gray-100">
-            <h1 className="text-2xl font-black text-gray-900 tracking-tight">
-              #1 PRESSURE WASHING IN PORTLAND
-            </h1>
-            <p className="text-base font-semibold text-blue-900 mt-0.5">
-              We Do It Right The First Time!
-            </p>
-            <p className="text-gray-400 text-xs mt-1">
-              Serving Portland, Beaverton, Lake Oswego, Tigard, Hillsboro &amp;
-              surrounding areas
-            </p>
+          <div className="px-6 py-4 border-b border-gray-100">
+            <div className="flex items-center gap-4">
+              <Image
+                src="/images/me/me.webp"
+                alt="David Strickland"
+                width={72}
+                height={72}
+                className="rounded w-40 h-40 object-cover flex-shrink-0"
+              />
+              <div>
+                <h1 className="text-2xl font-black text-gray-900 tracking-tight">
+                  #1 PRESSURE WASHING IN PORTLAND
+                </h1>
+                <p className="text-base font-semibold text-blue-900 mt-0.5">
+                  We Do It Right The First Time!
+                </p>
+                <p className="text-gray-400 text-xs mt-1">
+                  Serving Portland, Beaverton, Lake Oswego, Tigard, Hillsboro &amp;
+                  surrounding areas
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* ── BEFORE / AFTER PHOTOS ── */}
@@ -194,7 +202,7 @@ export default function FlyerPage() {
           {/* ── FOOTER CTA ── */}
           <div className="px-6 pt-6 pb-8 text-center border-t-4 border-red-600">
             <p className="text-gray-400 text-[10px] uppercase tracking-widest mb-2">
-              Ready for a cleaner home? Call or scan to book online!
+              Ready for a cleaner home? Call or book online!
             </p>
             <div className="text-5xl font-black text-blue-900 mb-4">
               (503) 812-9841

@@ -13,11 +13,11 @@ export default function AboutPage() {
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
           <div>
             <Image
-              src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=400&fit=crop"
+              src="/images/me/me.webp"
               alt="Pressure washing team"
               width={600}
               height={400}
-              className="rounded-lg shadow-lg w-full h-80 object-cover"
+              className="rounded-lg shadow-lg w-full h-120 object-cover"
               priority
             />
           </div>
