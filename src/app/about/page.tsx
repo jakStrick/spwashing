@@ -98,11 +98,7 @@ export default function AboutPage() {
                 author: "Susan P.",
                 location: "Portland, OR",
               },
-              {
-                text: "Strickland transformed our home's exterior. The siding and concrete work were superb. Fair pricing and excellent communication throughout.",
-                author: "Jennifer L.",
-                location: "Lake Oswego, OR",
-              },
+
               {
                 text: "They did a great job washing my truck and it looked great. Highly recommend!",
                 author: "DCSS Customer",

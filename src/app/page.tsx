@@ -27,19 +27,20 @@ export default function HomePage() {
 
   const reviews = [
     {
-      text: "We have used Strickland Pressure Washing for several years. It always looks great when they are finished. Would recommend their services to anyone!",
-      author: "Sarah M.",
+      text: "I would recommend Strickland Pressure Washing to anyone in Portland. They did an amazing job and were so professional throughout the entire process.",
+      author: "Olivia T.",
+      location: "Vernonia, OR",
+    },
+    {
+      text: "They showed up on time and were very professional. I would definitely recommend them to anyone looking for pressure washing services.",
+      author: "Susan P.",
       location: "Portland, OR",
     },
+
     {
-      text: "Outstanding service! The team was professional, on time, and did an amazing job. My house looks brand new!",
-      author: "Mike R.",
+      text: "They did a great job washing my truck and it looked great. Highly recommend!",
+      author: "DCSS Customer",
       location: "Beaverton, OR",
-    },
-    {
-      text: "I can't say enough good things about Strickland. They transformed my driveway and deck. Highly recommended!",
-      author: "Jennifer L.",
-      location: "Lake Oswego, OR",
     },
   ];
 
@@ -196,20 +197,12 @@ export default function HomePage() {
             Awards & Certifications
           </h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
             <div className="text-center">
               <div className="bg-white p-4 rounded-lg shadow-md h-24 flex items-center justify-center">
                 <div>
                   <Award className="text-yellow-500 mx-auto mb-1" size={32} />
                   <p className="text-xs font-semibold">Best of Portland</p>
-                </div>
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="bg-white p-4 rounded-lg shadow-md h-24 flex items-center justify-center">
-                <div>
-                  <Star className="text-blue-600 mx-auto mb-1" size={32} />
-                  <p className="text-xs font-semibold">BBB A+ Rating</p>
                 </div>
               </div>
             </div>
@@ -476,12 +469,12 @@ export default function HomePage() {
             </div>
             <div>
               <h2 className="text-4xl font-bold mb-6 text-gray-900">
-                Results You Have To See To Believe
+                Results You Can Believe
               </h2>
               <p className="text-xl text-gray-700 mb-6">
-                With over 50,000 jobs completed, our professionals have the
-                knowledge and experience to thoroughly clean your outdoor
-                surfaces. Don't settle for anything less than perfect.
+                With over 100 jobs completed, we have the knowledge and
+                experience to thoroughly clean your outdoor surfaces. Don't
+                settle for anything less than perfect.
               </p>
               <div className="flex gap-4">
                 <Link
@@ -521,7 +514,7 @@ export default function HomePage() {
             </div>
 
             <p className="text-xl text-gray-700 text-center mb-6 italic">
-              "{reviews[currentReview].text}"
+              {reviews[currentReview].text}
             </p>
 
             <p className="text-center font-semibold text-gray-900">

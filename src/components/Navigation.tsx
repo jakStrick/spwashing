@@ -5,12 +5,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 
-const Logo = ({ className = "h-36 w-full" }) => (
+const Logo = ({ className = "h-24 w-24" }) => (
   <Image
-    src="/images/logo/stricklandPressure.svg"
-    alt="Strickland Pressure Washing Services"
-    width={850}
-    height={100}
+    src="/images/logo/stricklandPressure.jpg"
+    alt="Strickland Pressure Washing Services Logo"
+    width={50}
+    height={50}
     className={className}
     priority
   />
@@ -32,7 +32,7 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-24">
           <Link href="/" className="cursor-pointer w-80">
-            <Logo className="h-46 w-full" />
+            <Logo />
           </Link>
 
           {/* Desktop Navigation */}
