@@ -27,8 +27,12 @@ export default function Footer() {
           <div>
             <h4 className="font-bold mb-4">Contact</h4>
             <p className="text-gray-400 mb-2">Phone: (503) 812-9841</p>
-            <p className="text-gray-400 mb-2">Email: info@stricklandwash.com</p>
-            <p className="text-gray-400">123 Main Street, Portland, OR 97201</p>
+            <p className="text-gray-400 mb-2">
+              Email: stricklandpwashing@gmail.com
+            </p>
+            <p className="text-gray-400">
+              17692 SW Falling Leaf Court, Beaverton, OR 97003
+            </p>
           </div>
 
           <div>
@@ -61,8 +65,8 @@ export default function Footer() {
               className="text-gray-400 hover:text-white transition-colors"
             >
               DCSS Web Dev
-            </a>
-            {" "}· Jan 2026. All rights reserved.
+            </a>{" "}
+            · Jan 2026. All rights reserved.
           </p>
         </div>
       </div>
