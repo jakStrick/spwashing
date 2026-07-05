@@ -104,23 +104,23 @@ export default function HomePage() {
             {[
               {
                 name: "House Wash",
-                img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=300&h=200&fit=crop",
+                img: "images/portfolio/house.webp",
               },
               {
                 name: "Concrete Wash",
-                img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=300&h=200&fit=crop",
+                img: "images/portfolio/sealing.webp",
               },
               {
-                name: "Deck & Patio",
-                img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=300&h=200&fit=crop",
+                name: "Fence, Deck & Patio",
+                img: "images/portfolio/fence.webp",
               },
               {
                 name: "Outdoor Siding",
-                img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+                img: "images/portfolio/spw2.webp",
               },
               {
                 name: "Vehicle Washing",
-                img: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=300&h=200&fit=crop",
+                img: "images/portfolio/truck.webp",
               },
             ].map((service, index) => (
               <div

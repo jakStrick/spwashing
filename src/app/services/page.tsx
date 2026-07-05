@@ -16,7 +16,7 @@ export default function ServicesPage() {
       img: "images/portfolio/driveway.webp",
     },
     {
-      title: "Deck & Fence Cleaning",
+      title: "Fence, Deck & Patio Cleaning",
       description:
         "Revive your outdoor wooden structures with our specialized cleaning process.",
       img: "images/portfolio/fence.webp",
