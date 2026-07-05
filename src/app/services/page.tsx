@@ -7,37 +7,37 @@ export default function ServicesPage() {
       title: "House Washing",
       description:
         "Enhance your home's beauty and prolong its lifespan with our gentle, yet effective house washing service.",
-      img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=300&fit=crop",
+      img: "images/portfolio/house.webp",
     },
     {
       title: "Driveway Cleaning",
       description:
         "Restore your driveway to pristine condition with our powerful concrete cleaning methods.",
-      img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop",
+      img: "images/portfolio/driveway.webp",
     },
     {
       title: "Deck & Fence Cleaning",
       description:
         "Revive your outdoor wooden structures with our specialized cleaning process.",
-      img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=300&fit=crop",
+      img: "images/portfolio/fence.webp",
     },
     {
       title: "Concrete Sealing",
       description:
         "Protect your concrete surfaces from weathering and extend their lifespan.",
-      img: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&h=300&fit=crop",
+      img: "images/portfolio/sealing.webp",
     },
     {
       title: "Outdoor Siding",
       description:
         "Restore your home's siding to like-new condition, removing mold, mildew, and years of buildup safely.",
-      img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
+      img: "images/portfolio/spw2.webp",
     },
     {
       title: "Vehicle Washing",
       description:
         "Professional exterior washing for cars, trucks, RVs, and fleet vehicles using safe, low-pressure techniques.",
-      img: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=400&h=300&fit=crop",
+      img: "images/portfolio/truck.webp",
     },
   ];
 
@@ -122,10 +122,7 @@ export default function ServicesPage() {
             {galleryImgBefore.map((before, index) => {
               const after = galleryImgAfter[index];
               return (
-                <div
-                  key={index}
-                  className="rounded-lg shadow-md bg-white"
-                >
+                <div key={index} className="rounded-lg shadow-md bg-white">
                   <div className="grid grid-cols-2 divide-x divide-gray-200">
                     {/* Before */}
                     <div className="relative">
