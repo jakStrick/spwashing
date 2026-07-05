@@ -229,60 +229,13 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Stats Section */}
-      <div
-        className="relative bg-cover bg-center py-20"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1600&h=600&fit=crop)",
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8 text-center text-white mb-12">
-            <div>
-              <p className="text-5xl font-bold mb-2">15+</p>
-              <p className="text-xl">YEARS OF SERVICE</p>
-            </div>
-            <div>
-              <p className="text-5xl font-bold mb-2">50,000+</p>
-              <p className="text-xl">SATISFIED CUSTOMERS</p>
-            </div>
-            <div>
-              <p className="text-5xl font-bold mb-2">100%</p>
-              <p className="text-xl">SATISFACTION GUARANTEE</p>
-            </div>
-          </div>
-
-          <div className="flex justify-center items-center gap-8 flex-wrap">
-            <div className="bg-white p-4 rounded-lg">
-              <div className="flex items-center gap-2">
-                <Star className="text-yellow-500 fill-yellow-500" size={24} />
-                <span className="font-semibold">BBB A+</span>
-              </div>
-            </div>
-            <div className="bg-white p-4 rounded-lg">
-              <div className="flex items-center gap-2">
-                <Award className="text-blue-600" size={24} />
-                <span className="font-semibold">HomeAdvisor</span>
-              </div>
-            </div>
-            <div className="bg-white p-4 rounded-lg">
-              <div className="flex items-center gap-2">
-                <Shield className="text-green-600" size={24} />
-                <span className="font-semibold">Insured</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Services Section */}
       <div className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=500&h=333&fit=crop"
+                src="images/portfolio/house.webp"
                 alt="House Wash"
                 width={500}
                 height={333}
@@ -307,7 +260,7 @@ export default function HomePage() {
 
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&h=333&fit=crop"
+                src="images/portfolio/sealing.webp"
                 alt="Concrete Wash"
                 width={500}
                 height={333}
@@ -315,7 +268,7 @@ export default function HomePage() {
               />
               <div className="p-6">
                 <h3 className="text-2xl font-bold mb-3 text-gray-900">
-                  Concrete Wash & Seal
+                  Concrete Sealing
                 </h3>
                 <p className="text-gray-600 mb-4">
                   Extract dirt and grime from your concrete and help prevent
@@ -332,7 +285,7 @@ export default function HomePage() {
 
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=333&fit=crop"
+                src="images/portfolio/spw2.webp"
                 alt="Outdoor Siding"
                 width={500}
                 height={333}
@@ -357,7 +310,7 @@ export default function HomePage() {
 
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=500&h=333&fit=crop"
+                src="images/portfolio/truck.webp"
                 alt="Vehicle Washing"
                 width={500}
                 height={333}
