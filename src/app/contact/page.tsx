@@ -13,7 +13,7 @@ interface contactFormData {
 }
 
 export default function ContactPage() {
-  const [state, handleFormspreeSubmit] = useForm("mpqgbzlv"); // <-- new
+  const [state, handleFormspreeSubmit] = useForm("mpqgbzlv");
   const [contactFormData, setFormData] = useState<contactFormData>({
     name: "",
     email: "",
@@ -30,7 +30,7 @@ export default function ContactPage() {
       contactFormData.email &&
       contactFormData.phone
     ) {
-      await handleFormspreeSubmit(e); // <-- sends to Formspree instead of alert
+      await handleFormspreeSubmit(e);
     } else {
       alert("Please fill in all required fields.");
     }
@@ -80,10 +80,76 @@ export default function ContactPage() {
           reach out to you with a quote in the next 24 hours!
         </p>
 
-        {/* Contact Info column stays exactly the same */}
-        <div className="flex justify-center">
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* Contact Information column */}
+          <div>
+            <h2 className="text-2xl font-bold mb-6 text-gray-900">
+              Get In Touch
+            </h2>
+            <p className="text-gray-700 mb-8">
+              Have a question or ready to schedule a service? Reach out to us
+              and we'll get back to you as soon as possible.
+            </p>
+
+            <div className="space-y-4">
+              <div className="flex items-start">
+                <Phone className="text-red-600 mt-1 mr-4" size={24} />
+                <div>
+                  <h3 className="font-semibold text-gray-900">Phone</h3>
+                  <a
+                    href="tel:503-812-9841"
+                    className="text-red-600 font-bold text-lg hover:text-red-700"
+                  >
+                    (503) 812-9841
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <Mail className="text-red-600 mt-1 mr-4" size={24} />
+                <div>
+                  <h3 className="font-semibold text-gray-900">Email</h3>
+                  <p className="text-gray-600">stricklandpwashing@gmail.com</p>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <MapPin className="text-red-600 mt-1 mr-4" size={24} />
+                <div>
+                  <h3 className="font-semibold text-gray-900">Address</h3>
+                  <p className="text-gray-600">
+                    17692 SW Falling Leaf Court
+                    <br />
+                    Beaverton, OR 97003
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 bg-blue-50 p-6 rounded-lg">
+              <h3 className="font-semibold mb-2 text-gray-900">
+                Business Hours
+              </h3>
+              <p className="text-gray-700">
+                Monday - Friday: 8:00 AM - 6:00 PM
+              </p>
+              <p className="text-gray-700">Saturday: 9:00 AM - 4:00 PM</p>
+              <p className="text-gray-700">Sunday: Closed</p>
+            </div>
+
+            <div className="mt-8 bg-red-50 border-2 border-red-200 p-6 rounded-lg">
+              <h3 className="font-bold text-xl mb-2 text-red-700">
+                Special Offer!
+              </h3>
+              <p className="text-gray-700">
+                Get 10% off when you mention this website!
+              </p>
+            </div>
+          </div>
+
+          {/* Contact Form column */}
           <div className="bg-white p-8 rounded-lg shadow-lg border-2 border-gray-200">
-            <h2 className="text-5xl font-bold mb-6 text-gray-900">
+            <h2 className="text-2xl font-bold mb-6 text-gray-900">
               Check Availability
             </h2>
 
