@@ -40,7 +40,6 @@ export default function PamphletPage() {
   ];
 
   const benefits = [
-    "Fully Insured & Bonded",
     "Trained Professionals",
     "Eco-Friendly Products",
     "Free Estimates",
@@ -153,11 +152,11 @@ export default function PamphletPage() {
             </p>
             <p>
               <span className="text-gray-300">Email: </span>
-              info@stricklandwash.com
+              stricklandpwashing@gmail.com
             </p>
             <p>
-              <span className="text-gray-300">Address: </span>123 Main Street,
-              Portland, OR 97201
+              <span className="text-gray-300">Address: </span>17692 SW Falling
+              Leaf Ct., Beaverton, OR 97003
             </p>
             <p>
               <span className="text-gray-300">Hours: </span>Mon–Fri 8AM–6PM
@@ -169,7 +168,7 @@ export default function PamphletPage() {
               GET YOUR FREE QUOTE!
             </div>
             <p className="text-gray-300 text-sm">
-              www.stricklandpressurewasher.com
+              www.stricklandpressurewashing.com
             </p>
           </div>
         </div>
