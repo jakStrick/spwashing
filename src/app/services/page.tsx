@@ -44,38 +44,46 @@ export default function ServicesPage() {
   const galleryImgBefore = [
     {
       src: "/images/portfolio/spw11.webp",
-      alt: "Strickland pressure washing before 11",
+      alt: "Dirty steps made of red brick.",
     },
     {
       src: "/images/portfolio/spw5.webp",
-      alt: "Strickland pressure washing before 1",
+      alt: "Dirty patio made of red brick.",
     },
     {
       src: "/images/portfolio/spw6.webp",
-      alt: "Strickland pressure washing before 6",
+      alt: "Dirty cement driveway.",
     },
     {
       src: "/images/portfolio/spw13.webp",
-      alt: "Strickland pressure washing before 12",
+      alt: "Dirty cement side of house.",
+    },
+    {
+      src: "/images/portfolio/spw14.webp",
+      alt: "Dirty, mossy retaining wall.",
     },
   ];
 
   const galleryImgAfter: { src: string; alt: string }[] = [
     {
       src: "/images/portfolio/spw10.webp",
-      alt: "Strickland pressure washing before 10",
+      alt: "Clean steps made of red brick.",
     },
     {
       src: "/images/portfolio/spw7.webp",
-      alt: "Strickland pressure washing before 2",
+      alt: "Clean patio made of red brick.",
     },
     {
       src: "/images/portfolio/spw3.webp",
-      alt: "Strickland pressure washing before 3",
+      alt: "Clean cement driveway.",
     },
     {
       src: "/images/portfolio/spw12.webp",
-      alt: "Strickland pressure washing before 13",
+      alt: "Clean cement side of house.",
+    },
+    {
+      src: "/images/portfolio/spw15.webp",
+      alt: "Clean, moss-free retaining wall.",
     },
   ];
 
