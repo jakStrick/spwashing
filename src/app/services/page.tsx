@@ -82,7 +82,7 @@ export default function ServicesPage() {
       alt: "Clean cement side of house.",
     },
     {
-      src: "/images/portfolio/spw15.webp",
+      src: "/images/portfolio/spw151.webp",
       alt: "Clean, moss-free retaining wall.",
     },
   ];
