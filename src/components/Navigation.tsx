@@ -30,13 +30,13 @@ export default function Navigation() {
   return (
     <nav className="bg-blue-900 text-white sticky top-0 z-50 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-24">
-          <Link href="/" className="cursor-pointer w-80">
+        <div className="flex items-center h-24 pl-28">
+          <Link href="/" className="cursor-pointer">
             <Logo />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8 ml-18">
             {pages.map((page) => (
               <Link
                 key={page.name}
@@ -50,6 +50,9 @@ export default function Navigation() {
                 {page.name}
               </Link>
             ))}
+          </div>
+
+          <div className="hidden md:flex items-center space-x-8 ml-auto">
             <div className="text-center">
               <p className="text-xs text-white">CALL NOW FOR YOUR FREE QUOTE</p>
               <a
@@ -68,7 +71,7 @@ export default function Navigation() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden ml-auto">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:bg-gray-100"
