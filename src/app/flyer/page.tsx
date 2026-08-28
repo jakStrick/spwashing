@@ -1,21 +1,27 @@
-"use client";
 import Image from "next/image";
+import type { Metadata } from "next";
 import { Phone, Check, Star } from "lucide-react";
+import PrintButton from "@/components/PrintButton";
+import { getBusinessInfo, getServices, getTestimonials } from "@/lib/content";
+
+export const metadata: Metadata = {
+  title: "Printable Flyer | Strickland Pressure Washing Services",
+  description: "A printable one-page flyer for Strickland Pressure Washing Services.",
+};
 
 export default function FlyerPage() {
-  const services = [
-    "House Washing",
-    "Driveway Cleaning",
-    "Deck & Fence Cleaning",
-    "Concrete Sealing",
-    "Outdoor Siding",
-    "Vehicle Washing",
-  ];
+  const businessInfo = getBusinessInfo();
+  const services = getServices();
+  const testimonial = getTestimonials()[0];
 
   const credentials = [
     { value: "100%", label: "Guarantee" },
-
     { value: "5-Star", label: "Reviewed" },
+  ];
+
+  const beforeAfterPairs = [
+    { before: "/images/portfolio/spw11.webp", after: "/images/portfolio/spw10.webp" },
+    { before: "/images/portfolio/spw5.webp", after: "/images/portfolio/spw7.webp" },
   ];
 
   return (
@@ -29,12 +35,9 @@ export default function FlyerPage() {
 
       {/* On-screen print button */}
       <div className="print:hidden fixed bottom-6 right-6 z-50">
-        <button
-          onClick={() => window.print()}
-          className="bg-blue-900 text-white px-8 py-4 rounded-full font-bold shadow-xl hover:bg-blue-800 transition-colors text-base"
-        >
+        <PrintButton className="bg-blue-900 text-white px-8 py-4 rounded-full font-bold shadow-xl hover:bg-blue-800 transition-colors text-base">
           Print Flyer
-        </button>
+        </PrintButton>
       </div>
 
       {/* Gray backdrop on screen so the paper edge is visible */}
@@ -54,7 +57,7 @@ export default function FlyerPage() {
             <div className="text-right">
               <div className="flex items-center justify-end gap-2">
                 <Phone size={16} className="text-blue-300" />
-                <span className="text-3xl font-black">(503) 812-9841</span>
+                <span className="text-3xl font-black">{businessInfo.phone}</span>
               </div>
               <div className="text-xs text-blue-300 mt-1">
                 AVAILABLE 7 DAYS A WEEK
@@ -85,10 +88,10 @@ export default function FlyerPage() {
                   #1 PRESSURE WASHING IN PORTLAND
                 </h1>
                 <p className="text-base font-semibold text-blue-900 mt-0.5">
-                  We Do It Right The First Time!
+                  {businessInfo.tagline}
                 </p>
                 <p className="text-gray-400 text-xs mt-1">
-                  Serving Portland, Beaverton, Lake Oswego, Tigard, Hillsboro &amp;
+                  Serving {businessInfo.serviceAreas.join(", ")} &amp;
                   surrounding areas
                 </p>
               </div>
@@ -101,16 +104,7 @@ export default function FlyerPage() {
               Real Results From Your Neighbors
             </p>
             <div className="grid grid-cols-2 gap-3">
-              {[
-                {
-                  before: "/images/portfolio/spw11.webp",
-                  after: "/images/portfolio/spw10.webp",
-                },
-                {
-                  before: "/images/portfolio/spw5.webp",
-                  after: "/images/portfolio/spw7.webp",
-                },
-              ].map((pair, i) => (
+              {beforeAfterPairs.map((pair, i) => (
                 <div
                   key={i}
                   className="border border-gray-200 rounded overflow-hidden"
@@ -152,14 +146,14 @@ export default function FlyerPage() {
               Our Services
             </p>
             <div className="grid grid-cols-3 gap-2">
-              {services.map((s, i) => (
+              {services.map((service) => (
                 <div
-                  key={i}
+                  key={service.slug}
                   className="flex items-center gap-2 bg-white border border-gray-100 rounded px-3 py-2"
                 >
                   <Check size={13} className="text-blue-900 flex-shrink-0" />
                   <span className="text-xs font-semibold text-gray-800">
-                    {s}
+                    {service.shortTitle}
                   </span>
                 </div>
               ))}
@@ -169,7 +163,7 @@ export default function FlyerPage() {
           {/* ── TESTIMONIAL ── */}
           <div className="px-10 py-4 border-t border-gray-100 text-center">
             <div className="flex justify-center gap-0.5 mb-2">
-              {[...Array(5)].map((_, i) => (
+              {[...Array(testimonial.rating)].map((_, i) => (
                 <Star
                   key={i}
                   size={12}
@@ -177,13 +171,12 @@ export default function FlyerPage() {
                 />
               ))}
             </div>
-            <p className="text-gray-600 italic text-sm leading-relaxed">
-              &ldquo;We have used Strickland Pressure Washing for several years.
-              It always looks great when they are finished. Would recommend
-              their services to anyone!&rdquo;
-            </p>
+            <div
+              className="text-gray-600 italic text-sm leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: testimonial.textHtml }}
+            />
             <p className="text-xs font-bold text-gray-700 mt-1">
-              — Sarah M., Portland, OR
+              — {testimonial.author}, {testimonial.location}
             </p>
           </div>
 
@@ -205,7 +198,7 @@ export default function FlyerPage() {
               Ready for a cleaner home? Call or book online!
             </p>
             <div className="text-5xl font-black text-blue-900 mb-4">
-              (503) 812-9841
+              {businessInfo.phone}
             </div>
             <div className="flex justify-center gap-3">
               <span className="bg-red-600 text-white text-xs font-bold px-4 py-2 rounded">

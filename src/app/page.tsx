@@ -1,5 +1,3 @@
-"use client";
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -11,6 +9,8 @@ import {
   Shield,
   Phone,
 } from "lucide-react";
+import ReviewCarousel from "@/components/ReviewCarousel";
+import { getBusinessInfo, getFeaturedServices, getServices, getTestimonials } from "@/lib/content";
 
 const Guarantee = ({ className = "h-36 w-full" }) => (
   <Image
@@ -23,34 +23,10 @@ const Guarantee = ({ className = "h-36 w-full" }) => (
 );
 
 export default function HomePage() {
-  const [currentReview, setCurrentReview] = useState(0);
-
-  const reviews = [
-    {
-      text: "I would recommend Strickland Pressure Washing to anyone in Portland. They did an amazing job and were so professional throughout the entire process.",
-      author: "Olivia T.",
-      location: "Vernonia, OR",
-    },
-    {
-      text: "They showed up on time and were very professional. I would definitely recommend them to anyone looking for pressure washing services.",
-      author: "Susan P.",
-      location: "Portland, OR",
-    },
-
-    {
-      text: "They did a great job washing my truck and it looked great. Highly recommend!",
-      author: "DCSS Customer",
-      location: "Beaverton, OR",
-    },
-  ];
-
-  const nextReview = () => {
-    setCurrentReview((prev) => (prev + 1) % reviews.length);
-  };
-
-  const prevReview = () => {
-    setCurrentReview((prev) => (prev - 1 + reviews.length) % reviews.length);
-  };
+  const businessInfo = getBusinessInfo();
+  const services = getServices();
+  const featuredServices = getFeaturedServices();
+  const testimonials = getTestimonials();
 
   return (
     <div className="bg-white">
@@ -75,7 +51,7 @@ export default function HomePage() {
               </h1>
               <div className="mb-6">
                 <p className="text-lg text-gray-600 mt-2">
-                  We do it right the first time!
+                  {businessInfo.tagline}
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -86,10 +62,10 @@ export default function HomePage() {
                   Schedule Now To Save 10%
                 </Link>
                 <a
-                  href="tel:503-812-9841"
+                  href={businessInfo.phoneHref}
                   className="bg-blue-900 text-white px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-800 transition-colors shadow-lg text-center"
                 >
-                  (503) 812-9841
+                  {businessInfo.phone}
                 </a>
               </div>
             </div>
@@ -100,43 +76,22 @@ export default function HomePage() {
       {/* Services Quick Links */}
       <div className="bg-gray-50 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {[
-              {
-                name: "House Wash",
-                img: "images/portfolio/house.webp",
-              },
-              {
-                name: "Concrete Wash",
-                img: "images/portfolio/sealing.webp",
-              },
-              {
-                name: "Fence, Deck & Patio",
-                img: "images/portfolio/fence.webp",
-              },
-              {
-                name: "Outdoor Siding",
-                img: "images/portfolio/spw2.webp",
-              },
-              {
-                name: "Vehicle Washing",
-                img: "images/portfolio/truck.webp",
-              },
-            ].map((service, index) => (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+            {services.map((service) => (
               <div
-                key={index}
+                key={service.slug}
                 className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow cursor-pointer"
               >
                 <Image
-                  src={service.img}
-                  alt={service.name}
+                  src={service.image}
+                  alt={service.title}
                   width={300}
                   height={200}
                   className="w-full h-32 object-cover"
                 />
                 <div className="p-3 text-center">
                   <h3 className="font-semibold text-sm text-gray-900">
-                    {service.name}
+                    {service.shortTitle}
                   </h3>
                 </div>
               </div>
@@ -196,7 +151,7 @@ export default function HomePage() {
           <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">
             Accolades
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols- gap-8 items-center">
+          <div className="grid grid-cols-2 gap-8 items-center">
             <div className="text-center">
               <div className="bg-white p-4 rounded-lg shadow-md h-24 flex items-center justify-center">
                 <div>
@@ -222,7 +177,7 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <Guarantee className="h-98 w-full p-4" />
           <p className="text-xl text-gray-700 mt-8 max-w-2xl mx-auto p-4">
-            At Strickland Pressure Washing Services, we guarantee to deliver the
+            At {businessInfo.name}, we guarantee to deliver the
             best results possible for your property using our safe and effective
             processes!
           </p>
@@ -233,105 +188,35 @@ export default function HomePage() {
       <div className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <Image
-                src="images/portfolio/house.webp"
-                alt="House Wash"
-                width={500}
-                height={333}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-2xl font-bold mb-3 text-gray-900">
-                  House Wash
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Thoroughly clean your home's exterior with safe pressure and
-                  biodegradable cleansers.
-                </p>
-                <Link
-                  href="/services"
-                  className="text-red-600 font-semibold hover:text-red-700 flex items-center"
-                >
-                  Learn More <ChevronRight size={20} />
-                </Link>
+            {featuredServices.map((service) => (
+              <div
+                key={service.slug}
+                className="bg-white rounded-lg shadow-lg overflow-hidden"
+              >
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  width={500}
+                  height={333}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold mb-3 text-gray-900">
+                    {service.title}
+                  </h3>
+                  <div
+                    className="text-gray-600 mb-4"
+                    dangerouslySetInnerHTML={{ __html: service.descriptionHtml }}
+                  />
+                  <Link
+                    href="/services"
+                    className="text-red-600 font-semibold hover:text-red-700 flex items-center"
+                  >
+                    Learn More <ChevronRight size={20} />
+                  </Link>
+                </div>
               </div>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <Image
-                src="images/portfolio/sealing.webp"
-                alt="Concrete Wash"
-                width={500}
-                height={333}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-2xl font-bold mb-3 text-gray-900">
-                  Concrete Sealing
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Extract dirt and grime from your concrete and help prevent
-                  seasonal cracking and chipping.
-                </p>
-                <Link
-                  href="/services"
-                  className="text-red-600 font-semibold hover:text-red-700 flex items-center"
-                >
-                  Learn More <ChevronRight size={20} />
-                </Link>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <Image
-                src="images/portfolio/spw2.webp"
-                alt="Outdoor Siding"
-                width={500}
-                height={333}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-2xl font-bold mb-3 text-gray-900">
-                  Outdoor Siding
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Restore your home's siding to like-new condition, removing
-                  mold, mildew, and years of buildup.
-                </p>
-                <Link
-                  href="/services"
-                  className="text-red-600 font-semibold hover:text-red-700 flex items-center"
-                >
-                  Learn More <ChevronRight size={20} />
-                </Link>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <Image
-                src="images/portfolio/truck.webp"
-                alt="Vehicle Washing"
-                width={500}
-                height={333}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-2xl font-bold mb-3 text-gray-900">
-                  Vehicle Washing
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Professional exterior washing for cars, trucks, RVs, and fleet
-                  vehicles using safe, low-pressure techniques.
-                </p>
-                <Link
-                  href="/services"
-                  className="text-red-600 font-semibold hover:text-red-700 flex items-center"
-                >
-                  Learn More <ChevronRight size={20} />
-                </Link>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -409,7 +294,7 @@ export default function HomePage() {
               </h2>
               <p className="text-xl text-gray-700 mb-6">
                 With over 100 jobs completed, we have the knowledge and
-                experience to thoroughly clean your outdoor surfaces. Don't
+                experience to thoroughly clean your outdoor surfaces. Don&apos;t
                 settle for anything less than perfect.
               </p>
               <div className="flex gap-4">
@@ -420,10 +305,10 @@ export default function HomePage() {
                   Schedule Now
                 </Link>
                 <a
-                  href="tel:503-812-9841"
+                  href={businessInfo.phoneHref}
                   className="bg-gray-200 text-gray-900 px-6 py-3 rounded-md font-semibold hover:bg-gray-300 transition-colors"
                 >
-                  (503) 812-9841
+                  {businessInfo.phone}
                 </a>
               </div>
             </div>
@@ -438,43 +323,7 @@ export default function HomePage() {
             What Our Customers Have to Say
           </h2>
 
-          <div className="bg-gray-50 rounded-lg p-8 shadow-lg relative">
-            <div className="flex justify-center mb-4">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className="text-yellow-400 fill-yellow-400"
-                  size={24}
-                />
-              ))}
-            </div>
-
-            <p className="text-xl text-gray-700 text-center mb-6 italic">
-              {reviews[currentReview].text}
-            </p>
-
-            <p className="text-center font-semibold text-gray-900">
-              {reviews[currentReview].author}
-            </p>
-            <p className="text-center text-gray-600 mb-6">
-              {reviews[currentReview].location}
-            </p>
-
-            <div className="flex justify-center gap-4">
-              <button
-                onClick={prevReview}
-                className="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition-colors"
-              >
-                <ChevronRight size={24} className="rotate-180" />
-              </button>
-              <button
-                onClick={nextReview}
-                className="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition-colors"
-              >
-                <ChevronRight size={24} />
-              </button>
-            </div>
-          </div>
+          <ReviewCarousel testimonials={testimonials} />
 
           <div className="text-center mt-8">
             <Link

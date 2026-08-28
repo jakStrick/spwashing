@@ -1,62 +1,33 @@
-"use client";
 import Image from "next/image";
+import type { Metadata } from "next";
+import PrintButton from "@/components/PrintButton";
+import { getBusinessInfo, getServices } from "@/lib/content";
+
+export const metadata: Metadata = {
+  title: "Printable Pamphlet | Strickland Pressure Washing Services",
+  description:
+    "A printable tri-fold-style pamphlet for Strickland Pressure Washing Services.",
+};
+
+const benefits = [
+  "Trained Professionals",
+  "Eco-Friendly Products",
+  "Free Estimates",
+  "Same-Week Service",
+  "Satisfaction Guaranteed",
+];
 
 export default function PamphletPage() {
-  const handlePrint = () => {
-    window.print();
-  };
-
-  const services = [
-    {
-      icon: "🏠",
-      title: "House Washing",
-      desc: "Safe, effective cleaning that restores your home's exterior beauty and protects the surface.",
-    },
-    {
-      icon: "🛣️",
-      title: "Driveway & Concrete",
-      desc: "Remove years of dirt and grime from driveways, sidewalks, and all concrete surfaces.",
-    },
-    {
-      icon: "🪵",
-      title: "Deck & Fence",
-      desc: "Revive wooden structures with our specialized pressure washing process.",
-    },
-    {
-      icon: "🧱",
-      title: "Outdoor Siding",
-      desc: "Remove mold, mildew, and buildup from all exterior siding types safely.",
-    },
-    {
-      icon: "🚘",
-      title: "Vehicle Washing",
-      desc: "Low-pressure exterior wash for cars, trucks, RVs, and fleet vehicles.",
-    },
-    {
-      icon: "🛡️",
-      title: "Concrete Sealing",
-      desc: "Protect your concrete surfaces from weathering and extend their lifespan.",
-    },
-  ];
-
-  const benefits = [
-    "Trained Professionals",
-    "Eco-Friendly Products",
-    "Free Estimates",
-    "Same-Week Service",
-    "Satisfaction Guaranteed",
-  ];
+  const businessInfo = getBusinessInfo();
+  const services = getServices();
 
   return (
     <div className="bg-gray-200 py-8 px-4">
       {/* Print Button */}
       <div className="max-w-[8.5in] mx-auto mb-4 flex justify-end print:hidden">
-        <button
-          onClick={handlePrint}
-          className="bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors shadow-lg"
-        >
+        <PrintButton className="bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors shadow-lg">
           Print / Save as PDF
-        </button>
+        </PrintButton>
       </div>
 
       <div className="w-[8.5in] min-h-[11in] mx-auto bg-white shadow-2xl flex flex-col print:w-full print:shadow-none">
@@ -85,7 +56,7 @@ export default function PamphletPage() {
           <p className="text-sm font-semibold tracking-widest uppercase mb-1">
             Call Now for Your Free Quote
           </p>
-          <p className="text-4xl font-bold tracking-wide">(503) 812-9841</p>
+          <p className="text-4xl font-bold tracking-wide">{businessInfo.phone}</p>
         </div>
 
         {/* Body */}
@@ -98,17 +69,18 @@ export default function PamphletPage() {
             <div className="grid grid-cols-2 gap-3">
               {services.map((service) => (
                 <div
-                  key={service.title}
+                  key={service.slug}
                   className="flex gap-3 bg-gray-50 rounded-lg p-4 border border-gray-200"
                 >
                   <span className="text-2xl flex-shrink-0">{service.icon}</span>
                   <div>
                     <h3 className="font-bold text-gray-900 text-sm mb-1">
-                      {service.title}
+                      {service.shortTitle}
                     </h3>
-                    <p className="text-xs text-gray-600 leading-snug">
-                      {service.desc}
-                    </p>
+                    <div
+                      className="text-xs text-gray-600 leading-snug"
+                      dangerouslySetInnerHTML={{ __html: service.descriptionHtml }}
+                    />
                   </div>
                 </div>
               ))}
@@ -148,19 +120,22 @@ export default function PamphletPage() {
           <div className="text-sm space-y-1">
             <p className="font-bold text-base mb-2">Contact Us Today</p>
             <p>
-              <span className="text-gray-300">Phone: </span>(503) 812-9841
+              <span className="text-gray-300">Phone: </span>
+              {businessInfo.phone}
             </p>
             <p>
               <span className="text-gray-300">Email: </span>
-              stricklandpwashing@gmail.com
+              {businessInfo.email}
             </p>
             <p>
-              <span className="text-gray-300">Address: </span>17692 SW Falling
-              Leaf Ct., Beaverton, OR 97003
+              <span className="text-gray-300">Address: </span>
+              {businessInfo.address.street}, {businessInfo.address.city},{" "}
+              {businessInfo.address.state} {businessInfo.address.zip}
             </p>
             <p>
-              <span className="text-gray-300">Hours: </span>Mon–Fri 8AM–6PM
-              &nbsp;·&nbsp; Sat 9AM–4PM
+              <span className="text-gray-300">Hours: </span>Mon–Fri{" "}
+              {businessInfo.hours.weekday} &nbsp;·&nbsp; Sat{" "}
+              {businessInfo.hours.saturday}
             </p>
           </div>
           <div className="text-right flex flex-col items-end gap-2">
@@ -174,7 +149,7 @@ export default function PamphletPage() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @media print {
           html,
           body {

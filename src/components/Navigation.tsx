@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import type { BusinessInfo } from "@/lib/content";
 
 const Logo = ({ className = "h-24 w-24" }) => (
   <Image
@@ -16,7 +17,11 @@ const Logo = ({ className = "h-24 w-24" }) => (
   />
 );
 
-export default function Navigation() {
+export default function Navigation({
+  businessInfo,
+}: {
+  businessInfo: BusinessInfo;
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
@@ -30,13 +35,13 @@ export default function Navigation() {
   return (
     <nav className="bg-blue-900 text-white sticky top-0 z-50 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center h-24 pl-28">
-          <Link href="/" className="cursor-pointer">
+        <div className="flex items-center justify-between gap-6 h-24">
+          <Link href="/" className="cursor-pointer flex-shrink-0">
             <Logo />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8 ml-18">
+          <div className="hidden md:flex items-center gap-8">
             {pages.map((page) => (
               <Link
                 key={page.name}
@@ -52,14 +57,14 @@ export default function Navigation() {
             ))}
           </div>
 
-          <div className="hidden md:flex items-center space-x-8 ml-auto">
+          <div className="hidden md:flex items-center gap-6 flex-shrink-0">
             <div className="text-center">
               <p className="text-xs text-white">CALL NOW FOR YOUR FREE QUOTE</p>
               <a
-                href="tel:503-812-9841"
+                href={businessInfo.phoneHref}
                 className="text-red-600 font-bold text-lg hover:text-red-700"
               >
-                (503) 812-9841
+                {businessInfo.phone}
               </a>
             </div>
             <Link
@@ -71,10 +76,11 @@ export default function Navigation() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden ml-auto">
+          <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:bg-gray-100"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-blue-800"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -101,10 +107,10 @@ export default function Navigation() {
               </Link>
             ))}
             <a
-              href="tel:503-812-9841"
+              href={businessInfo.phoneHref}
               className="block w-full text-left px-3 py-2 text-red-600 font-bold"
             >
-              Call (503) 812-9841
+              Call {businessInfo.phone}
             </a>
             <Link
               href="/contact"

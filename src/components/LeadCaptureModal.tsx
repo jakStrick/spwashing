@@ -10,10 +10,14 @@ const TIME_TRIGGER_MS = 45000; // pop up after ~45s of engaged time on page
 const EXIT_INTENT_ARM_DELAY_MS = 8000; // ignore stray cursor moves right after load
 const SUPPRESSED_PATHS = ["/contact", "/flyer", "/pamphlet"];
 
-export default function LeadCaptureModal() {
+export default function LeadCaptureModal({
+  formspreeId,
+}: {
+  formspreeId: string;
+}) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [state, handleFormspreeSubmit] = useForm("mpqgbzlv");
+  const [state, handleFormspreeSubmit] = useForm(formspreeId);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const shownRef = useRef(false);

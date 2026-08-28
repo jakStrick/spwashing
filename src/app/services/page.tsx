@@ -1,45 +1,15 @@
 import Image from "next/image";
+import type { Metadata } from "next";
+import { getServices } from "@/lib/content";
 
-// Services Page
+export const metadata: Metadata = {
+  title: "Our Services | Strickland Pressure Washing Services",
+  description:
+    "House washing, driveway cleaning, deck & fence cleaning, concrete sealing, outdoor siding, and vehicle washing in Portland, OR.",
+};
+
 export default function ServicesPage() {
-  const services = [
-    {
-      title: "House Washing",
-      description:
-        "Enhance your home's beauty and prolong its lifespan with our gentle, yet effective house washing service.",
-      img: "images/portfolio/house.webp",
-    },
-    {
-      title: "Driveway Cleaning",
-      description:
-        "Restore your driveway to pristine condition with our powerful concrete cleaning methods.",
-      img: "images/portfolio/driveway.webp",
-    },
-    {
-      title: "Fence, Deck & Patio Cleaning",
-      description:
-        "Revive your outdoor wooden structures with our specialized cleaning process.",
-      img: "images/portfolio/fence.webp",
-    },
-    {
-      title: "Concrete Sealing",
-      description:
-        "Protect your concrete surfaces from weathering and extend their lifespan.",
-      img: "images/portfolio/sealing.webp",
-    },
-    {
-      title: "Outdoor Siding",
-      description:
-        "Restore your home's siding to like-new condition, removing mold, mildew, and years of buildup safely.",
-      img: "images/portfolio/spw2.webp",
-    },
-    {
-      title: "Vehicle Washing",
-      description:
-        "Professional exterior washing for cars, trucks, RVs, and fleet vehicles using safe, low-pressure techniques.",
-      img: "images/portfolio/truck.webp",
-    },
-  ];
+  const services = getServices();
 
   const galleryImgBefore = [
     {
@@ -95,13 +65,13 @@ export default function ServicesPage() {
         </h1>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {services.map((service, index) => (
+          {services.map((service) => (
             <div
-              key={index}
+              key={service.slug}
               className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
             >
               <Image
-                src={service.img}
+                src={service.image}
                 alt={service.title}
                 width={400}
                 height={300}
@@ -111,7 +81,10 @@ export default function ServicesPage() {
                 <h3 className="text-xl font-semibold mb-3 text-gray-900">
                   {service.title}
                 </h3>
-                <p className="text-gray-600">{service.description}</p>
+                <div
+                  className="text-gray-600"
+                  dangerouslySetInnerHTML={{ __html: service.descriptionHtml }}
+                />
               </div>
             </div>
           ))}
