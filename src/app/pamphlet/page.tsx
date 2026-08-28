@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Printable Pamphlet | Strickland Pressure Washing Services",
   description:
     "A printable tri-fold-style pamphlet for Strickland Pressure Washing Services.",
+  robots: { index: false, follow: false },
 };
 
 const benefits = [
@@ -143,7 +144,7 @@ export default function PamphletPage() {
               GET YOUR FREE QUOTE!
             </div>
             <p className="text-gray-300 text-sm">
-              www.stricklandpressurewashing.com
+              {businessInfo.website.replace(/^https?:\/\//, "")}
             </p>
           </div>
         </div>

@@ -7,6 +7,7 @@ const CONTENT_DIR = path.join(process.cwd(), "content");
 
 export interface BusinessInfo {
   name: string;
+  website: string;
   tagline: string;
   phone: string;
   phoneHref: string;
@@ -110,4 +111,30 @@ export function getAboutContent(): AboutContent {
     foundedYear: data.foundedYear,
     bodyHtml: marked.parse(content.trim(), { async: false }) as string,
   };
+}
+
+/**
+ * Latest modification time across a set of content paths (files or
+ * directories, relative to `content/`) — used to give the sitemap an
+ * honest `lastmod` per route instead of stamping every route with the
+ * build time on every deploy.
+ */
+export function getContentLastModified(relativePaths: string[]): Date {
+  let latest = 0;
+
+  for (const relativePath of relativePaths) {
+    const fullPath = path.join(CONTENT_DIR, relativePath);
+    const stat = fs.statSync(fullPath);
+
+    if (stat.isDirectory()) {
+      for (const file of fs.readdirSync(fullPath)) {
+        const mtime = fs.statSync(path.join(fullPath, file)).mtimeMs;
+        if (mtime > latest) latest = mtime;
+      }
+    } else if (stat.mtimeMs > latest) {
+      latest = stat.mtimeMs;
+    }
+  }
+
+  return new Date(latest);
 }

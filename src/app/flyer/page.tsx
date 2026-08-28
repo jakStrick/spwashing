@@ -7,6 +7,7 @@ import { getBusinessInfo, getServices, getTestimonials } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Printable Flyer | Strickland Pressure Washing Services",
   description: "A printable one-page flyer for Strickland Pressure Washing Services.",
+  robots: { index: false, follow: false },
 };
 
 export default function FlyerPage() {

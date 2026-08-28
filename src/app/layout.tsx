@@ -16,27 +16,24 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const SITE_URL = "https://www.stricklandpressurewashing.com";
+const businessInfo = getBusinessInfo();
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: "Strickland Pressure Washing Services",
-  description:
-    "Professional pressure washing services in Portland, OR. We do it right the first time!",
+  metadataBase: new URL(businessInfo.website),
+  title: businessInfo.name,
+  description: `Professional pressure washing services in Portland, OR. ${businessInfo.tagline}`,
   openGraph: {
-    title: "Strickland Pressure Washing Services",
-    description:
-      "Professional pressure washing services in Portland, OR. We do it right the first time!",
-    url: SITE_URL,
-    siteName: "Strickland Pressure Washing Services",
+    title: businessInfo.name,
+    description: `Professional pressure washing services in Portland, OR. ${businessInfo.tagline}`,
+    url: businessInfo.website,
+    siteName: businessInfo.name,
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "Strickland Pressure Washing Services",
-    description:
-      "Professional pressure washing services in Portland, OR. We do it right the first time!",
+    title: businessInfo.name,
+    description: `Professional pressure washing services in Portland, OR. ${businessInfo.tagline}`,
   },
 };
 
@@ -45,15 +42,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const businessInfo = getBusinessInfo();
-
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: businessInfo.name,
     telephone: businessInfo.phone,
     email: businessInfo.email,
-    url: SITE_URL,
+    url: businessInfo.website,
     address: {
       "@type": "PostalAddress",
       streetAddress: businessInfo.address.street,
