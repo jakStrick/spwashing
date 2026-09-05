@@ -75,7 +75,10 @@ export default function RootLayout({
         <div className="print:hidden">
           <Footer businessInfo={businessInfo} />
         </div>
-        <LeadCaptureModal formspreeId={businessInfo.formspreeId} />
+        <LeadCaptureModal
+          formspreeId={businessInfo.formspreeId}
+          turnstileSiteKey={businessInfo.turnstileSiteKey}
+        />
       </body>
     </html>
   );

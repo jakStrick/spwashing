@@ -25,6 +25,7 @@ export interface BusinessInfo {
   };
   serviceAreas: string[];
   formspreeId: string;
+  turnstileSiteKey: string;
 }
 
 export interface Service {

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
 import { useForm, ValidationError } from "@formspree/react";
+import TurnstileWidget from "@/components/TurnstileWidget";
 
 const SESSION_KEY = "spw_lead_modal_shown";
 const TIME_TRIGGER_MS = 45000; // pop up after ~45s of engaged time on page
@@ -12,8 +13,10 @@ const SUPPRESSED_PATHS = ["/contact", "/flyer", "/pamphlet"];
 
 export default function LeadCaptureModal({
   formspreeId,
+  turnstileSiteKey,
 }: {
   formspreeId: string;
+  turnstileSiteKey: string;
 }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -21,6 +24,23 @@ export default function LeadCaptureModal({
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const shownRef = useRef(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const turnstileToken = new FormData(e.currentTarget).get(
+      "cf-turnstile-response",
+    );
+    if (!turnstileToken) {
+      alert("Please complete the verification challenge.");
+      return;
+    }
+    try {
+      await handleFormspreeSubmit(e);
+    } finally {
+      // Turnstile tokens are single-use; hand the widget back for a retry.
+      window.turnstile?.reset();
+    }
+  };
 
   useEffect(() => {
     if (SUPPRESSED_PATHS.includes(pathname)) return;
@@ -108,7 +128,7 @@ export default function LeadCaptureModal({
               no-obligation quote.
             </p>
 
-            <form onSubmit={handleFormspreeSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <input type="hidden" name="source" value="exit-intent-modal" />
               <div>
                 <label htmlFor="modal-name" className="sr-only">
@@ -145,6 +165,7 @@ export default function LeadCaptureModal({
                   errors={state.errors}
                 />
               </div>
+              <TurnstileWidget siteKey={turnstileSiteKey} />
               <button
                 type="submit"
                 disabled={state.submitting}

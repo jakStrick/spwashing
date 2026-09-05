@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useForm, ValidationError } from "@formspree/react";
+import TurnstileWidget from "@/components/TurnstileWidget";
 import type { Service } from "@/lib/content";
 
 interface ContactFormData {
@@ -15,9 +16,11 @@ interface ContactFormData {
 export default function ContactForm({
   formspreeId,
   services,
+  turnstileSiteKey,
 }: {
   formspreeId: string;
   services: Service[];
+  turnstileSiteKey: string;
 }) {
   const [state, handleFormspreeSubmit] = useForm(formspreeId);
   const [contactFormData, setFormData] = useState<ContactFormData>({
@@ -32,13 +35,25 @@ export default function ContactForm({
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (
-      contactFormData.name &&
-      contactFormData.email &&
-      contactFormData.phone
+      !contactFormData.name ||
+      !contactFormData.email ||
+      !contactFormData.phone
     ) {
-      await handleFormspreeSubmit(e);
-    } else {
       alert("Please fill in all required fields.");
+      return;
+    }
+    const turnstileToken = new FormData(e.currentTarget).get(
+      "cf-turnstile-response",
+    );
+    if (!turnstileToken) {
+      alert("Please complete the verification challenge.");
+      return;
+    }
+    try {
+      await handleFormspreeSubmit(e);
+    } finally {
+      // Turnstile tokens are single-use; hand the widget back for a retry.
+      window.turnstile?.reset();
     }
   };
 
@@ -177,6 +192,10 @@ export default function ContactForm({
             className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
           ></textarea>
           <ValidationError prefix="Message" field="message" errors={state.errors} />
+        </div>
+
+        <div className="mb-4">
+          <TurnstileWidget siteKey={turnstileSiteKey} />
         </div>
 
         <button

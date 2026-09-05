@@ -95,7 +95,11 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Form column */}
-          <ContactForm formspreeId={businessInfo.formspreeId} services={services} />
+          <ContactForm
+            formspreeId={businessInfo.formspreeId}
+            services={services}
+            turnstileSiteKey={businessInfo.turnstileSiteKey}
+          />
         </div>
       </div>
     </div>
