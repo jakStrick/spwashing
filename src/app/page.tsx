@@ -293,7 +293,7 @@ export default function HomePage() {
                 Results You Can Believe
               </h2>
               <p className="text-xl text-gray-700 mb-6">
-                With over 100 jobs completed, we have the knowledge and
+                With over 50 jobs completed, we have the knowledge and
                 experience to thoroughly clean your outdoor surfaces. Don&apos;t
                 settle for anything less than perfect.
               </p>

@@ -51,7 +51,7 @@ const beforeAfter = [
 
 const stats = [
   { n: "2020", l: "Serving Portland since" },
-  { n: "100+", l: "Jobs completed" },
+  { n: "50+", l: "Jobs completed" },
   { n: "5.0", l: "★ Average review rating" },
   { n: "Free", l: "Same-day phone quotes" },
 ];
@@ -168,7 +168,7 @@ export default function FlyerPage() {
                     x="150"
                     y="160"
                     fontFamily="Geist, Arial, sans-serif"
-                    fontSize="21"
+                    fontSize="17"
                     fontWeight="800"
                     letterSpacing="1"
                     textAnchor="middle"
@@ -180,7 +180,7 @@ export default function FlyerPage() {
                     x="150"
                     y="182"
                     fontFamily="Geist, Arial, sans-serif"
-                    fontSize="21"
+                    fontSize="17"
                     fontWeight="800"
                     letterSpacing="1"
                     textAnchor="middle"
