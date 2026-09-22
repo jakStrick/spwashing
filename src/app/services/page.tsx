@@ -32,6 +32,10 @@ export default function ServicesPage() {
       src: "/images/portfolio/spw14.webp",
       alt: "Dirty, mossy retaining wall.",
     },
+       {
+      src: "/images/portfolio/spw16.jpeg",
+      alt: "Dirty, mossy gutters.",
+    },
   ];
 
   const galleryImgAfter: { src: string; alt: string }[] = [
@@ -54,6 +58,10 @@ export default function ServicesPage() {
     {
       src: "/images/portfolio/spw151.webp",
       alt: "Clean, moss-free retaining wall.",
+    },
+       {
+      src: "/images/portfolio/spw17.jpeg",
+      alt: "Clean, moss-free gutters.",
     },
   ];
 
