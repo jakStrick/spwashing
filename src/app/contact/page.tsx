@@ -4,9 +4,10 @@ import ContactForm from "@/components/ContactForm";
 import { getBusinessInfo, getServices } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Request A Free Quote | Strickland Pressure Washing Services",
+  title: "Request A Free Pressure Washing Quote",
   description:
     "Get a free pressure washing quote in Portland, OR. We respond within 24 hours.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

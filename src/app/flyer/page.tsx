@@ -4,7 +4,7 @@ import PrintButton from "@/components/PrintButton";
 import { getBusinessInfo } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Printable Flyer | Strickland Pressure Washing Services",
+  title: "Printable Flyer",
   description: "A printable one-page flyer for Strickland Pressure Washing Services.",
   robots: { index: false, follow: false },
 };
@@ -23,12 +23,8 @@ const services = [
     detail: "Powerful concrete cleaning that pulls out set-in stains.",
   },
   {
-    name: "Deck & Fence Cleaning",
+    name: "Deck & Patio Cleaning",
     detail: "Revives tired wood without chewing up the grain.",
-  },
-  {
-    name: "Concrete Sealing",
-    detail: "Protects surfaces from weather and extends their life.",
   },
   {
     name: "Vehicle Washing",

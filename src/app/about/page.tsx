@@ -4,9 +4,10 @@ import { Award, Shield, Star } from "lucide-react";
 import { getAboutContent, getTestimonials } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "About Us | Strickland Pressure Washing Services",
+  title: "About Us",
   description:
     "Serving the Portland community since 2010 with professional, eco-friendly pressure washing for homes and businesses.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {

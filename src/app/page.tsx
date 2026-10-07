@@ -36,11 +36,11 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <Image
-                src="https://images.unsplash.com/photo-1683647115932-b33455fe6a3e?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fit=crop"
-                alt="Professional pressure washing team"
-                width={800}
-                height={600}
-                className="rounded-lg shadow-xl w-full"
+                src="/images/portfolio/patio-scrubbing.webp"
+                alt="Strickland Pressure Washing scrubbing a flagstone patio"
+                width={1200}
+                height={1600}
+                className="rounded-lg shadow-xl w-full aspect-[4/3] object-cover object-top"
                 priority
               />
             </div>
@@ -279,14 +279,24 @@ export default function HomePage() {
       <div className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <Image
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop"
-                alt="Before and after pressure washing"
-                width={600}
-                height={400}
-                className="rounded-lg shadow-xl w-full"
-              />
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { src: "/images/portfolio/walkway-before.webp", label: "Before" },
+                { src: "/images/portfolio/walkway-after.webp", label: "After" },
+              ].map((photo) => (
+                <div key={photo.label} className="relative">
+                  <Image
+                    src={photo.src}
+                    alt={`Flagstone walkway ${photo.label.toLowerCase()} pressure washing`}
+                    width={1200}
+                    height={1600}
+                    className="rounded-lg shadow-xl w-full aspect-[3/4] object-cover"
+                  />
+                  <span className="absolute top-3 left-3 bg-blue-900 text-white text-sm font-bold px-3 py-1 rounded">
+                    {photo.label}
+                  </span>
+                </div>
+              ))}
             </div>
             <div>
               <h2 className="text-4xl font-bold mb-6 text-gray-900">
@@ -311,6 +321,43 @@ export default function HomePage() {
                   {businessInfo.phone}
                 </a>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* See Us in Action Video */}
+      <div className="bg-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="order-2 md:order-1">
+              <h2 className="text-4xl font-bold mb-6 text-gray-900">
+                See Us in Action
+              </h2>
+              <p className="text-xl text-gray-700 mb-6">
+                Moss, dirt, and years of grime lifted right off this flagstone
+                walkway. We take the time to clean every surface the right way.
+              </p>
+              <Link
+                href="/contact"
+                className="bg-red-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-red-700 transition-colors inline-block"
+              >
+                Get A Free Quote
+              </Link>
+            </div>
+            <div className="order-1 md:order-2 flex justify-center">
+              <video
+                src="/videos/patio-cleaning.mp4"
+                poster="/videos/patio-cleaning-poster.webp"
+                className="rounded-lg shadow-xl w-full max-w-sm aspect-[9/16] object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+                preload="metadata"
+                aria-label="Pressure washing a flagstone walkway"
+              />
             </div>
           </div>
         </div>

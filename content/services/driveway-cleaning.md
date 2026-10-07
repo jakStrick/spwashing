@@ -2,7 +2,7 @@
 title: Driveway Cleaning
 shortTitle: Driveway Cleaning
 icon: "🛣️"
-image: /images/portfolio/driveway.webp
+image: /images/portfolio/driveway-after.webp
 order: 2
 featured: false
 ---

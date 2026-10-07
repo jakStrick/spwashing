@@ -3,9 +3,10 @@ import type { Metadata } from "next";
 import { getServices } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Our Services | Strickland Pressure Washing Services",
+  title: "Pressure Washing Services in Portland, OR",
   description:
-    "House washing, driveway cleaning, deck & fence cleaning, concrete sealing, outdoor siding, and vehicle washing in Portland, OR.",
+    "House washing, driveway cleaning, deck & patio cleaning, outdoor siding, and vehicle washing in Portland, Beaverton, and the west side. See real before & after photos.",
+  alternates: { canonical: "/services" },
 };
 
 export default function ServicesPage() {
@@ -36,6 +37,10 @@ export default function ServicesPage() {
       src: "/images/portfolio/spw16.jpeg",
       alt: "Dirty, mossy gutters.",
     },
+    {
+      src: "/images/portfolio/walkway-before.webp",
+      alt: "Dirty, mossy flagstone walkway.",
+    },
   ];
 
   const galleryImgAfter: { src: string; alt: string }[] = [
@@ -62,6 +67,10 @@ export default function ServicesPage() {
        {
       src: "/images/portfolio/spw17.jpeg",
       alt: "Clean, moss-free gutters.",
+    },
+    {
+      src: "/images/portfolio/walkway-after.webp",
+      alt: "Clean flagstone walkway.",
     },
   ];
 

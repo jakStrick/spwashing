@@ -1,8 +1,8 @@
 ---
 title: Fence, Deck & Patio Cleaning
-shortTitle: Deck & Fence Cleaning
+shortTitle: Deck & Patio Cleaning
 icon: "🪵"
-image: /images/portfolio/fence.webp
+image: /images/portfolio/patio-clean.webp
 order: 3
 featured: false
 ---

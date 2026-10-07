@@ -2,7 +2,7 @@
 title: House Washing
 shortTitle: House Washing
 icon: "🏠"
-image: /images/portfolio/house.webp
+image: /images/portfolio/house-siding-wash.webp
 order: 1
 featured: true
 ---

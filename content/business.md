@@ -20,6 +20,9 @@ serviceAreas:
   - Lake Oswego
   - Tigard
   - Hillsboro
+social:
+  facebook: "https://www.facebook.com/profile.php?id=61591785262366"
+  yelp: "https://www.yelp.com/biz/strickland-pressure-washing-services-beaverton"
 formspreeId: mpqgbzlv
 turnstileSiteKey: 0x4AAAAAAEpV0nK1oLMqbdtd
 ---

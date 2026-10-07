@@ -4,7 +4,7 @@ import PrintButton from "@/components/PrintButton";
 import { getBusinessInfo, getServices } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Printable Pamphlet | Strickland Pressure Washing Services",
+  title: "Printable Pamphlet",
   description:
     "A printable tri-fold-style pamphlet for Strickland Pressure Washing Services.",
   robots: { index: false, follow: false },

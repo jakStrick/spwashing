@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Facebook, Star } from "lucide-react";
 import type { BusinessInfo } from "@/lib/content";
 
 const Logo = ({ className = "h-36 w-full" }) => (
@@ -27,6 +28,29 @@ export default function Footer({
             <p className="text-gray-400">
               Portland&apos;s Professional Cleaning Solutions
             </p>
+            <h4 className="font-bold mt-6 mb-3">Follow Us</h4>
+            <div className="flex gap-3">
+              <a
+                href={businessInfo.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Strickland Pressure Washing on Facebook"
+                className="flex items-center gap-2 bg-gray-800 hover:bg-[#1877F2] text-gray-200 hover:text-white px-3 py-2 rounded-md text-sm transition-colors"
+              >
+                <Facebook size={18} />
+                Facebook
+              </a>
+              <a
+                href={businessInfo.social.yelp}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Strickland Pressure Washing on Yelp"
+                className="flex items-center gap-2 bg-gray-800 hover:bg-[#D32323] text-gray-200 hover:text-white px-3 py-2 rounded-md text-sm transition-colors"
+              >
+                <Star size={18} />
+                Yelp
+              </a>
+            </div>
           </div>
 
           <div>
@@ -61,7 +85,7 @@ export default function Footer({
               Privacy Policy
             </a>
             <span className="text-gray-400">·</span>
-            <a href="#" className="text-gray-400 hover:text-white">
+            <a href="/sitemap.xml" className="text-gray-400 hover:text-white">
               Sitemap
             </a>
           </div>

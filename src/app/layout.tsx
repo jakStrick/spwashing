@@ -4,7 +4,7 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import LeadCaptureModal from "@/components/LeadCaptureModal";
-import { getBusinessInfo } from "@/lib/content";
+import { getBusinessInfo, getServices } from "@/lib/content";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,24 +18,55 @@ const geistMono = Geist_Mono({
 
 const businessInfo = getBusinessInfo();
 
+const siteDescription = `Pressure washing in Portland, Beaverton, Tigard, Hillsboro & Lake Oswego, OR. House washing, driveways, patios, siding & vehicles. ${businessInfo.tagline}`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(businessInfo.website),
-  title: businessInfo.name,
-  description: `Professional pressure washing services in Portland, OR. ${businessInfo.tagline}`,
+  title: {
+    default: `Pressure Washing in Portland & Beaverton, OR | ${businessInfo.name}`,
+    template: `%s | ${businessInfo.name}`,
+  },
+  description: siteDescription,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: businessInfo.name,
-    description: `Professional pressure washing services in Portland, OR. ${businessInfo.tagline}`,
+    description: siteDescription,
     url: businessInfo.website,
     siteName: businessInfo.name,
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/images/portfolio/patio-scrubbing.webp",
+        width: 1200,
+        height: 1600,
+        alt: "Strickland Pressure Washing cleaning a flagstone patio",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: businessInfo.name,
-    description: `Professional pressure washing services in Portland, OR. ${businessInfo.tagline}`,
+    description: siteDescription,
+    images: ["/images/portfolio/patio-scrubbing.webp"],
   },
 };
+
+// "8:00 AM" -> "08:00"
+function to24h(time: string) {
+  const [, h, m, ampm] = time.match(/(\d+):(\d+)\s*(AM|PM)/i) ?? [];
+  if (!h) return null;
+  const hour = (Number(h) % 12) + (ampm.toUpperCase() === "PM" ? 12 : 0);
+  return `${String(hour).padStart(2, "0")}:${m}`;
+}
+
+function openingHours(days: string[], range: string) {
+  const [opens, closes] = range.split("-").map((t) => to24h(t.trim()));
+  if (!opens || !closes) return [];
+  return [{ "@type": "OpeningHoursSpecification", dayOfWeek: days, opens, closes }];
+}
 
 export default function RootLayout({
   children,
@@ -44,7 +75,7 @@ export default function RootLayout({
 }>) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": "HomeAndConstructionBusiness",
     name: businessInfo.name,
     telephone: businessInfo.phone,
     email: businessInfo.email,
@@ -56,7 +87,29 @@ export default function RootLayout({
       addressRegion: businessInfo.address.state,
       postalCode: businessInfo.address.zip,
     },
-    areaServed: businessInfo.serviceAreas,
+    areaServed: businessInfo.serviceAreas.map((city) => ({
+      "@type": "City",
+      name: `${city}, OR`,
+    })),
+    sameAs: Object.values(businessInfo.social),
+    image: `${businessInfo.website}/images/portfolio/patio-scrubbing.webp`,
+    logo: `${businessInfo.website}/images/logo/stricklandPressure.jpg`,
+    openingHoursSpecification: [
+      ...openingHours(
+        ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        businessInfo.hours.weekday,
+      ),
+      ...openingHours(["Saturday"], businessInfo.hours.saturday),
+      ...openingHours(["Sunday"], businessInfo.hours.sunday),
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Pressure Washing Services",
+      itemListElement: getServices().map((service) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: service.title },
+      })),
+    },
   };
 
   return (
