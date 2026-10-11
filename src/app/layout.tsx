@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     google: "your-google-code",
 
     other: {
-      "msvalidate.01": "856E6C405A1E79A472041A85A1C6DBFE  ",
+      "msvalidate.01": "856E6C405A1E79A472041A85A1C6DBFE",
     },
   },
 };
