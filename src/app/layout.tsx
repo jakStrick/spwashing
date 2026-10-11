@@ -5,6 +5,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import LeadCaptureModal from "@/components/LeadCaptureModal";
 import { getBusinessInfo, getServices } from "@/lib/content";
+import { title } from "process";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -51,6 +52,13 @@ export const metadata: Metadata = {
     title: businessInfo.name,
     description: siteDescription,
     images: ["/images/portfolio/patio-scrubbing.webp"],
+  },
+  verification: {
+    google: "your-google-code",
+
+    other: {
+      "msvalidate.01": "856E6C405A1E79A472041A85A1C6DBFE  ",
+    },
   },
 };
 
