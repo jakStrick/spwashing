@@ -76,11 +76,11 @@ export default function HomePage() {
       {/* Services Quick Links */}
       <div className="bg-gray-50 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+          <div className="flex flex-wrap justify-center gap-4">
             {services.map((service) => (
               <div
                 key={service.slug}
-                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow cursor-pointer"
+                className="w-[calc((100%-1rem)/2)] sm:w-[calc((100%-2rem)/3)] md:w-[calc((100%-5rem)/6)] bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow cursor-pointer"
               >
                 <Image
                   src={service.image}
@@ -187,11 +187,11 @@ export default function HomePage() {
       {/* Services Section */}
       <div className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="flex flex-wrap justify-center gap-8">
             {featuredServices.map((service) => (
               <div
                 key={service.slug}
-                className="bg-white rounded-lg shadow-lg overflow-hidden"
+                className="w-full md:w-[calc((100%-2rem)/2)] lg:w-[calc((100%-6rem)/4)] bg-white rounded-lg shadow-lg overflow-hidden"
               >
                 <Image
                   src={service.image}
